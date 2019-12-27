@@ -11,6 +11,7 @@ table {
 table, td {
   border: 1px solid #ccc;
   border-collapse: collapse;
+  opacity: 0.8;
 }
 
 td {
