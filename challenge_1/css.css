@@ -1,0 +1,32 @@
+body {
+  text-align: center;
+}
+
+table {
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+}
+
+table, td {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+td {
+  font-size: 35px;
+  width: 60px;
+  height: 60px
+}
+
+.x {
+  background-color: lawngreen;
+}
+.o {
+  background-color: skyblue;
+}
+
+#restart {
+  margin: 20px;
+  padding: 15px 30px;
+}
