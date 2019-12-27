@@ -16,7 +16,12 @@ table, td {
 td {
   font-size: 35px;
   width: 60px;
-  height: 60px
+  height: 60px;
+}
+
+td:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
 }
 
 .x {
