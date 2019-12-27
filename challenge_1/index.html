@@ -7,26 +7,32 @@
   </head>
   <body>
     <h1>tic tac toe</h1>
-    <div class='container'>
-      <table id="table">
-        <tr id='0'>
-          <td class="0"></td>
-          <td class="1"></td>
-          <td class="2"></td>
-        </tr>
-        <tr id='1'>
-          <td class="0"></td>
-          <td class="1"></td>
-          <td class="2"></td>
-        </tr>
-        <tr id='2'>
-          <td class="0"></td>
-          <td class="1"></td>
-          <td class="2"></td>
-        </tr>
-      </table>
-      <div>
-        <button id="restart">restart</button>
+    <div>
+      <div style="display: flex; justify-content: space-around;">
+          <p> X player <span id="x"> 0 </span></p>
+          <p> O playre <span id="o"> 0 </span></p>
+      </div>
+      <div class='container'>
+        <table id="table">
+          <tr id='0'>
+            <td class="0"></td>
+            <td class="1"></td>
+            <td class="2"></td>
+          </tr>
+          <tr id='1'>
+            <td class="0"></td>
+            <td class="1"></td>
+            <td class="2"></td>
+          </tr>
+          <tr id='2'>
+            <td class="0"></td>
+            <td class="1"></td>
+            <td class="2"></td>
+          </tr>
+        </table>
+        <div>
+          <button id="restart">restart</button>
+        </div>
       </div>
     </div>
     <script src="app.js"></script>

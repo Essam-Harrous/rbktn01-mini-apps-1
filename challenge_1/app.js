@@ -1,18 +1,24 @@
 var player = 'X';
 var board =  [['', '', ''], ['', '', ''], ['', '', '']];
 var embtyCells = 9;
+var x = 0;
+var o = 0;
+
+var playerX = document.getElementById('x');
+var playerO = document.getElementById('o');
 
 var table = document.getElementById('table')
 table.onclick = (event)=> {
   var container = event.path[1];
   var clickedElement = event.target;
 
-  // console.log(event)
+  console.log(clickedElement.classList[0])
 
-  if(board[container.id][clickedElement.className] === ''){
-    board[container.id][clickedElement.className] = player;
+  if(board[container.id][clickedElement.classList[0]] === ''){
+    board[container.id][clickedElement.classList[0]] = player;
     clickedElement.innerHTML = player;
     embtyCells--;
+    clickedElement.classList.add(player.toLowerCase())
 
 
     var h = horizontallCon(container.id, clickedElement);
@@ -21,21 +27,22 @@ table.onclick = (event)=> {
 
 
     if(h || v || d) {
-      alert(player + ' is winner')
-      restart()
+      player == 'X'? x++: o++;
+      playerX.innerHTML = x.toString();
+      playerO.innerHTML = o.toString();
+      setTimeout(clear, 200)
+      setTimeout(()=>alert(player + ' is winner'), 100)
     }else if(embtyCells == 0) {
-      alert('draw');
-      restart()
-    }
-    player == 'X'? player = 'O': player = 'X';
-  }else {
-    alert('choose another one')
-  }
+      setTimeout(()=> clear(), 200)
+      setTimeout(()=> alert('draw'), 100);
+    }else player == 'X'? player = 'O': player = 'X';
+
+  }else alert('choose another one')
 }
 
 
 document.getElementById('restart').onclick = ()=> {
-  restart()
+  clear(true)
 }
 
 
@@ -51,8 +58,8 @@ var horizontallCon = (containerId, clickedElement)=> {
 
 var verticalCon = (clickedElement)=> {
   for(var i = 0; i < board.length; i++) {
-    // console.log(board[i], clickedElement.className)
-    if(board[i][clickedElement.className] !== clickedElement.innerHTML) {
+    // console.log(board[i], clickedElement.classList[0])
+    if(board[i][clickedElement.classList[0]] !== clickedElement.innerHTML) {
       return false;
     }
   }
@@ -74,15 +81,24 @@ var diagonal = (clickedElement)=> {
   if(minor || major) return true;
 }
 
-var restart = () => {
+var clear = (restart = false) => {
   board =  [['', '', ''], ['', '', ''], ['', '', '']];
   embtyCells = 9;
+  if(restart) {
+    x = 0;
+    o = 0;
+    playerO.innerHTML = '0';
+    playerX.innerHTML = '0';
+    player = 'X';
+  }
+
 
   for(var i = 0; i < 3; i++) {
-    player = 'X'
     var classes = document.getElementsByClassName(i.toString())
     for(var j = 0; j < classes.length; j++) {
       classes[j].innerHTML = ''
+      classes[j].classList.remove('x')
+      classes[j].classList.remove('o')
     }
   }
 }
